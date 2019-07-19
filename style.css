@@ -1,0 +1,46 @@
+body {
+  display: flex;
+  /* justify-items: center; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+
+  font-family: Lato;
+  --primary-color: #E84855;
+  --secondary-color: #FFBEDF;
+}
+
+#title {
+  margin-bottom: 2em;
+}
+
+form {
+  margin-bottom: 1em;
+}
+
+input[type=number] {
+  padding: .5em 0;  
+}
+
+input[type=submit], button {
+  border: none;
+  padding: .75em 2em;
+  border-radius: 5px;
+  color: white;
+}
+
+input[type=submit] {
+  font-weight: bold;
+  background-color: var(--primary-color);
+}
+
+button {
+  background-color: var(--secondary-color);
+  color: balck;
+}
+
+button:disabled {
+  background-color: gray;
+}
+

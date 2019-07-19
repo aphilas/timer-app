@@ -22,6 +22,9 @@ const _getElValues = els => {
 
   els.forEach(el => {
     let value = parseInt(el.value)
+
+    if (!value) value = 0
+
     let key = el.name
     values[key] = value
   })
