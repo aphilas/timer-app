@@ -7,6 +7,8 @@ const secondsEl = document.getElementById('seconds')
 const pauseEl = document.getElementById('pause')
 const resetEl = document.getElementById('reset')
 
+const counterEl = document.getElementById('counter')
+
 const audiEl = document.getElementById('audio')
 
 const state = {
@@ -32,9 +34,6 @@ const _getElValues = els => {
   return values
 }
 
-const counterEl = document.createElement('h1')
-document.getElementsByTagName('body')[0].appendChild(counterEl)
-
 const renderCounter = _ => {
   let {hours, minutes, seconds} = state.time.getTimeObject()
   let [h, m, s] = [hours, minutes, seconds].map(component => String(component).padStart('2', '0'))
@@ -55,6 +54,16 @@ const runEngine = _ => {
   state.renderTimeout = setTimeout(_ => clearInterval(state.renderInterval), (state.time.timeStamp + 1) * 1000)
 }
 
+const disableControls = (disable = true) => {
+  if (!disable) {
+    pauseEl.removeAttribute('disabled')
+    resetEl.removeAttribute('disabled')
+  } else {
+    pauseEl.setAttribute('disabled', '')
+    resetEl.setAttribute('disabled', '')
+  }
+}
+
 const pauseEngine = _ => {
   state.time.pauseCountDown()
 
@@ -70,14 +79,17 @@ pickerEl.addEventListener('submit', event => {
 
   let {hours, minutes, seconds} = _getElValues([hoursEl, minutesEl, secondsEl])
   state.time = new Time({hours, minutes, seconds})
+  
+  if (state.time.timeStamp === 0) return
 
-  pauseEl.removeAttribute('disabled')
-  resetEl.removeAttribute('disabled')
-
+  disableControls(false)
   runEngine()
 })
 
 const alarm = _ => {
+  // should be moved elsewhere
+  pauseEl.setAttribute('disabled', '')
+
   audiEl.play()
   console.log('time is up!')
 }
@@ -128,11 +140,13 @@ class Time{
 }
 
 pauseEl.addEventListener('click', event => {
+  if (state.time.timeStamp <= 0) return
 
   if (state.paused) {
 
+    renderCounter()
     runEngine()
-    event.target.innerText = 'Pause'
+    event.target.innerText = 'Pause '
     state.paused = false
 
   } else {
@@ -145,9 +159,10 @@ pauseEl.addEventListener('click', event => {
 })
 
 resetEl.addEventListener('click', event => {
-  [hoursEl, minutesEl, secondsEl].forEach(el => el.value = 0)
+  [hoursEl, minutesEl, secondsEl].forEach(el => el.value = '')
 
   pauseEngine()
+  disableControls()
 
   state.time = undefined
   counterEl.innerText = `00 : 00 : 00`

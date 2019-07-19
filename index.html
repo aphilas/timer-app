@@ -21,22 +21,30 @@
     <form action="" id="time-picker">
   
       <!-- <label for="hours">Hours:</label> -->
-      <input type="number" id="hours" min="0" max="23" maxlength="2" name="hours" placeholder="hrs"> :
+      <input type="number" id="hours" min="0" max="23" maxlength="2" name="hours" placeholder="hrs" title="Hours"> 
+      <span class="colon"> : </span>
   
       <!-- <label for="minutes">Minutes:</label> -->
-      <input type="number" id="minutes" min="0" max="59" maxlength="2" placeholder="mins" name="minutes"> :
+      <input type="number" id="minutes" min="0" max="59" maxlength="2" placeholder="mins" name="minutes" title="Minutes">
+      <span class="colon"> : </span>
   
       <!-- <label for="seconds">Seconds:</label> -->
-      <input type="number" id="seconds" min="0" max="59" maxlength="2" placeholder="seconds" name="seconds">
+      <input type="number" id="seconds" min="0" max="59" maxlength="2" placeholder="secs" name="seconds" title="Seconds">
   
       <input type="submit" value="Start">
     </form>
-  
-    <button id="reset" disabled>Reset</button>
-    <button id="pause" disabled>Pause</button>
+    
+    <div id="controls">
+      <button id="reset" disabled>Reset</button>
+      <button id="pause" disabled>Pause </button>
+    </div>
+
+    <h1 id="counter">00 : 00 : 00</h1>
   
     <audio src="tom.wav" id="audio"></audio>
   </div>
+
+  <footer>Made with <code>!hate</code> by Neville Omangi. CopyLeft 2019.</footer>
 
   <script src="script.js"></script>
 </body>
