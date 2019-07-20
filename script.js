@@ -29,6 +29,8 @@ const _getElValues = els => {
       el.value = 0
     }
 
+    el.value = String(value).padStart('2', '0')
+
     let key = el.name
     values[key] = value
   })
