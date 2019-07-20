@@ -35,11 +35,20 @@ form {
 }
 
 input[type=number] {
-  line-height: 2em;
-  padding: 0 0 0 .25em;
+  line-height: 2.5em;
+  /* height: 2em; */
+
+  padding: 0 0 0 .5em;
   margin: 0 .25em;
+  border: 1px solid var(--light-gray);
+  border-radius: .4em;
 
   font-weight: bold;
+  color: var(--dark-gray);
+}
+
+input[type=number]:focus {
+  outline-color: var(--primary-muted);
 }
 
 input[type=submit], button {
