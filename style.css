@@ -74,14 +74,19 @@ input[type=submit] {
 }
 
 button {
-  background-color: var(--secondary-color);
-  color: white;
   margin: .25em;
+
+  /* prevent 'jump' on switch to/from disabled state */
+  border: 2px solid var(--transparent-white);
+
+  background-color: var(--primary-transparent);
+  color: var(--primary-color);
 }
 
 button:disabled {
-  background-color: rgb(170, 170, 170);
-  color: rgba(255, 255, 255, .8);
+  background-color: rgba(255, 255, 255, 0);
+  border: 2px solid var(--primary-transparent);
+  color: var(--primary-muted);
 }
 
 #controls {
