@@ -49,13 +49,13 @@ input[type=submit] {
 
 button {
   background-color: var(--secondary-color);
-  color: rgb(50, 50, 50);
+  color: white;
   margin: .25em;
 }
 
 button:disabled {
   background-color: rgb(170, 170, 170);
-  color: white;
+  color: rgba(255, 255, 255, .8);
 }
 
 #controls {
