@@ -4,11 +4,16 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
-
   font-family: Lato;
-  --primary-color: #E84855;
-  --secondary-color: rgb(120, 120, 120);
   margin: 0;
+
+  --primary-color: rgba(0, 142, 91, 1);
+  --primary-muted: rgba(0, 142, 91, .6);
+  --primary-transparent: rgba(0, 142, 91, .25);
+
+  --dark-gray: rgb(120, 120, 120);
+  --light-gray: rgb(220, 220, 220);
+  --transparent-white: rgba(255, 255, 255, 0);
 }
 
 #title {
