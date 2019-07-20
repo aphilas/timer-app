@@ -94,12 +94,12 @@ button:disabled {
   justify-content: center;
 }
 
-#pause {
-  width: 8em;
-}
-
 #counter {
   text-align: center;
+  font-weight: 900;
+  font-size: 3em;
+
+  color: var(--primary-color);
 }
 
 footer {
