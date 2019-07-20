@@ -7,7 +7,8 @@ body {
 
   font-family: Lato;
   --primary-color: #E84855;
-  --secondary-color: #FFBEDF;
+  --secondary-color: rgb(120, 120, 120);
+  margin: 0;
 }
 
 #title {
