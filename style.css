@@ -104,5 +104,5 @@ button:disabled {
 
 footer {
   font-size: .75em;
-  color: rgba(180, 180, 180, 1);
+  color: var(--dark-gray);
 }
