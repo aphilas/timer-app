@@ -16,6 +16,10 @@ body {
   --transparent-white: rgba(255, 255, 255, 0);
 }
 
+body, * {
+  box-sizing: border-box;
+}
+
 #title {
   margin-bottom: 1em;
   font-size: 1.5em;
