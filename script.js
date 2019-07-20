@@ -1,4 +1,3 @@
-
 const pickerEl = document.getElementById('time-picker')
 const hoursEl = document.getElementById('hours')
 const minutesEl = document.getElementById('minutes')
@@ -25,7 +24,10 @@ const _getElValues = els => {
   els.forEach(el => {
     let value = parseInt(el.value)
 
-    if (!value) value = 0
+    if (!value) {
+      value = 0
+      el.value = 0
+    }
 
     let key = el.name
     values[key] = value
