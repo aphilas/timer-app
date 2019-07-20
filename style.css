@@ -17,8 +17,10 @@ body {
 }
 
 #title {
-  /* margin-bottom: 1em; */
-  font-size: 2.5em;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  color: var(--primary-color);
+  text-align: center;
 }
 
 form {
