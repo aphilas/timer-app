@@ -56,10 +56,15 @@ input[type=submit], button {
   padding: .75em 2em;
   border-radius: 5px;
   color: white;
+
+  border-radius: 3em;
+  width: 10em;
+  font-weight: bold;
+  outline-color: var(--primary-muted);
 }
 
+/* start button */
 input[type=submit] {
-  font-weight: bold;
   background-color: var(--primary-color);
 }
 
