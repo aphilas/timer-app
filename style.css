@@ -108,6 +108,26 @@ input[type=submit], button {
 /* start button */
 input[type=submit] {
   background-color: var(--primary-color);
+
+  /* x, y, blur, spread */
+  box-shadow: 3px 3px 10px 2px var(--primary-transparent);
+}
+
+#start {
+  margin-left: 1em;
+}
+
+input[type=submit]:hover {
+  background-color: var(--primary-dark);
+}
+
+input[type=submit]:active, input[type=submit]:focus {
+  /* TODO: fix for a11y */
+  outline: none;
+}
+
+input[type=submit]:active {
+  box-shadow: none;
 }
 
 .colon {
@@ -120,9 +140,16 @@ button {
 
   /* prevent 'jump' on switch to/from disabled state */
   border: 2px solid var(--transparent-white);
-
   background-color: var(--primary-transparent);
   color: var(--primary-color);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  background-color: var(--primary-muted-lighter);
 }
 
 button:disabled {
