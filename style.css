@@ -167,6 +167,12 @@ footer {
   font-size: .75em;
   color: var(--dark-gray);
 }
+
+.paused {
+  /* name, timing, timing-function, delay, direction, fill mode */
+  animation: blink 2s ease-in-out 1s infinite forwards;  
+}
+
 @keyframes blink {
   0% {
     box-shadow: none;

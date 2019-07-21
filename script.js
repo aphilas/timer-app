@@ -155,6 +155,8 @@ class Time{
 pauseEl.addEventListener('click', event => {
   if (state.time.timeStamp <= 0) return
 
+  pauseEl.classList.toggle('paused')
+
   if (state.paused) {
 
     renderCounter()
@@ -172,7 +174,7 @@ pauseEl.addEventListener('click', event => {
 })
 
 resetEl.addEventListener('click', event => {
-  [hoursEl, minutesEl, secondsEl].forEach(el => el.value = '')
+  ;[hoursEl, minutesEl, secondsEl].forEach(el => el.value = '')
 
   pauseEngine()
   disableControls()
