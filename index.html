@@ -18,6 +18,14 @@
   <div id="app">
     <h1 id="title">Just Another Timer</h1>
 
+    <div id="quick-timer">
+      <button class="quick-time" data-units="minutes" data-value="5">5 mins</button>
+      <button class="quick-time" data-units="minutes" data-value="10">10 mins</button>
+      <button class="quick-time" data-units="minutes" data-value="30">30 mins</button>
+      <button class="quick-time" data-units="hours" data-value="1">1 hour</button>
+    </div>
+
+
     <form action="" id="time-picker">
   
       <!-- <label for="hours">Hours:</label> -->
@@ -31,7 +39,7 @@
       <!-- <label for="seconds">Seconds:</label> -->
       <input type="number" id="seconds" min="0" max="59" maxlength="2" placeholder="secs" name="seconds" title="Seconds">
   
-      <input type="submit" value="Start">
+      <input type="submit" value="Start" id="start">
     </form>
     
     <div id="controls">

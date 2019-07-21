@@ -10,6 +10,9 @@ const counterEl = document.getElementById('counter')
 
 const audiEl = document.getElementById('audio')
 
+const quickTimeEls = document.getElementsByClassName('quick-time')
+const startEl = document.getElementById('start')
+
 const state = {
   // time obj ...
 
@@ -172,6 +175,17 @@ resetEl.addEventListener('click', event => {
   counterEl.innerText = `00 : 00 : 00`
 })
 
+Array.from(quickTimeEls).forEach(el => {
+  el.addEventListener('click', event => {
+    const units = el.dataset.units
+    const value = el.dataset.value
+
+    ;[hoursEl, minutesEl, secondsEl].forEach(el => el.value = '')
+
+    document.getElementById(units).value = value
+    startEl.click()
+  })
+})
 
 
 

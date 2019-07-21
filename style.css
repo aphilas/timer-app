@@ -27,6 +27,46 @@ body, * {
   text-align: center;
 }
 
+#quick-timer {
+  margin-bottom: 3em;
+  display: flex;
+  align-items: center;
+
+  --border-radius: 3em;
+}
+
+.quick-time {
+  font-weight: bold;
+  font-size: .75em;
+  border-radius: 0;
+  margin: 0;
+  width: auto;
+  background: var(--transparent-white);
+
+  border:  2px solid var(--primary-muted-lighter);
+  border-left:  none;
+}
+
+.quick-time:hover {
+  background-color: var(--primary-transparent);
+}
+
+#quick-timer > :first-child {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-left: 2px solid var(--primary-muted-lighter);
+}
+
+#quick-timer > :last-child {
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+#time-picker, #controls {
+  /* name, timing, timing-function, delay, direction, fill mode */
+  animation: fade-in .5s ease-in;  
+}
+
 form {
   margin-bottom: 1em;
 
