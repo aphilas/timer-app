@@ -8,7 +8,9 @@ body {
   margin: 0;
 
   --primary-color: rgba(0, 142, 91, 1);
+  --primary-dark: rgb(2, 121, 77);
   --primary-muted: rgba(0, 142, 91, .6);
+  --primary-muted-lighter: rgba(0, 142, 91, .4);
   --primary-transparent: rgba(0, 142, 91, .25);
 
   --dark-gray: rgb(120, 120, 120);
@@ -134,15 +136,46 @@ button:disabled {
   justify-content: center;
 }
 
+#clock-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 #counter {
   text-align: center;
   font-weight: 900;
   font-size: 3em;
-
   color: var(--primary-color);
+
+  margin-right: .25em;
+}
+
+#ticker {
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+#ticker.ticking {
+  /* .5s delay to start the animation just as the seconds text is changing */
+  animation: blink 1s ease-out .5s infinite forwards;  
 }
 
 footer {
   font-size: .75em;
   color: var(--dark-gray);
+}
+@keyframes blink {
+  0% {
+    box-shadow: none;
+  } 
+  50% {
+    /* x, y, blur, spread */
+    box-shadow: 0px 0px 0px 4px rgba(0, 142, 91, .15);
+  }
+  100% {
+    box-shadow: none;    
+  }
 }

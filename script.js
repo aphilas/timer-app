@@ -7,7 +7,7 @@ const pauseEl = document.getElementById('pause')
 const resetEl = document.getElementById('reset')
 
 const counterEl = document.getElementById('counter')
-
+const tickerEl = document.getElementById('ticker')
 const audiEl = document.getElementById('audio')
 
 const quickTimeEls = document.getElementsByClassName('quick-time')
@@ -54,6 +54,9 @@ const runEngine = _ => {
   // start rendering counter every second
   state.renderInterval = setInterval(renderCounter, 1000)
 
+  // start ticking animation
+  tickerEl.classList.add('ticking')
+
   /**
    * render until counting is done
    * +1 to show 00 instead of 01 as last value  
@@ -72,7 +75,10 @@ const disableControls = (disable = true) => {
 }
 
 const pauseEngine = _ => {
-  state.time.pauseCountDown()
+  if (state.time) state.time.pauseCountDown()
+
+  // stop ticking
+  tickerEl.classList.remove('ticking')
 
   clearInterval(state.renderInterval)
   state.renderInterval = undefined
@@ -93,10 +99,10 @@ pickerEl.addEventListener('submit', event => {
   runEngine()
 })
 
-const alarm = _ => {
+const timeUp = _ => {
   // should be moved elsewhere
   pauseEl.setAttribute('disabled', '')
-
+  pauseEngine()
   audiEl.play()
   console.log('time is up!')
 }
@@ -116,7 +122,7 @@ class Time{
   countDown() {
     this.countDownInterval = setInterval(_ => {
       if (this.timeStamp <= 0) {
-        alarm()
+        timeUp()
 
         clearInterval(this.countDownInterval)
         return
