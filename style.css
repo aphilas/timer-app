@@ -110,7 +110,7 @@ input[type=submit] {
   background-color: var(--primary-color);
 }
 
-.colon{
+.colon {
   line-height: 2em;
   font-weight: bold;
 }
