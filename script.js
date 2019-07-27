@@ -91,7 +91,7 @@ pickerEl.addEventListener('submit', event => {
   event.preventDefault()
 
   let {hours, minutes, seconds} = _getElValues([hoursEl, minutesEl, secondsEl])
-  state.time = new Time({hours, minutes, seconds})
+  state.time = new Timer({hours, minutes, seconds})
   
   if (state.time.timeStamp === 0) return
 
@@ -107,9 +107,9 @@ const timeUp = _ => {
   console.log('time is up!')
 }
 
-class Time{
+class Timer{
   constructor(time) {
-    this.timeStamp = Time.timeToSeconds(time)
+    this.timeStamp = Timer.timeToSeconds(time)
   }
 
   currentValue() {
