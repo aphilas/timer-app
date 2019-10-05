@@ -116,21 +116,22 @@ class Timer{
     return this.timeStamp
   }
 
-  /**
-   * decrement the timestamp by 1 every second
-   */
-  countDown() {
-    this.countDownInterval = setInterval(_ => {
-      if (this.timeStamp <= 0) {
-        timeUp()
+elId('pause').addEventListener('click', ({ target }) => {
+  stopAudio()
 
-        clearInterval(this.countDownInterval)
-        return
-      }
+  if (!timer) return 
     
-      this.timeStamp--
-    }, 1000)
+  // if not on pause
+  if (!target.dataset.paused) {
+    timer.pause()
+    target.dataset.paused = true
+    target.innerText = 'Resume'
+  } else {
+    timer.start()
+    target.dataset.paused = "" // read as false
+    target.innerText = 'Pause '
   }
+})
 
 // wrap around inputs
 const wrapAround = (el, max) => {
