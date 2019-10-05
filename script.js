@@ -29,15 +29,15 @@ const Timer = (delay, fn) => {
     if (timer) {
       clearTimeout(timer)
       timer = 0
-}
     }
+  }
 
   const tick = _ => {
     delay -= 1
     timer = setTimeout(tick, 1000)
     fn(delay) // tick fn
     if (delay <= 0) clearTimer()
-}
+  }
 
   return {
     start() {
@@ -54,7 +54,7 @@ const Timer = (delay, fn) => {
       delay = 0
       return
     },
-}
+  }
 }
 
 // app timer
@@ -72,8 +72,8 @@ const tickFn = seconds => {
   if (seconds === 0) {
     elId('audio').play()
     timer = 0
-}
   }
+}
 
 picker.addEventListener('submit', event => {
   event.preventDefault()
@@ -83,13 +83,13 @@ picker.addEventListener('submit', event => {
 
   for (let [key, value] of data.entries()) {
     time[key] = parseInt(value) || 0
-}
+  }
 
   if (timer) timer.stop()
 
   const s = timeToSeconds(time)
   if (s === 0) return
-  
+
   timer = Timer(timeToSeconds(time), tickFn)
   timer.start()
 })
@@ -132,7 +132,7 @@ elId('pause').addEventListener('click', ({ target }) => {
 const wrapAround = (el, max) => {
   if (el.value > max) el.value = '00'
   if (el.value < 0) el.value = max
-  }
+}
 
 const padZero = str => str.padStart(2, '0')
 
@@ -146,8 +146,8 @@ const handler = ({ target }) => {
       break
     case 'h':
       wrapAround(target, 23)
-}
   }
+}
 
 Array.from(picker.elements).forEach(el => {
 
