@@ -3,8 +3,12 @@ const elId = id => document.getElementById(id)
 const timeToSeconds = ({h, m, s}) => (h * 3600) + (m * 60) + s
 const secondsToTime = s => ({ h: Math.floor(s / 3600), m: Math.floor((s % 3600) / 60), s: s % 60, })
 
-const pauseEl = document.getElementById('pause')
-const resetEl = document.getElementById('reset')
+// render counter - 00 : 02 : 01
+const counterEl = elId('counter')
+const renderCounter = ({h, m, s}) => {
+  ;[h, m, s] = [h, m, s].map(c => String(c).padStart(2,'0'))
+  counterEl.innerText = `${h} : ${m} : ${s}`
+}
 
 // quick timer
 Array.from(elId('quick-timer').children).forEach(el => {
