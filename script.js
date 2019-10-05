@@ -13,38 +13,40 @@ const audiEl = document.getElementById('audio')
 const quickTimeEls = document.getElementsByClassName('quick-time')
 const startEl = document.getElementById('start')
 
-const state = {
-  // time obj ...
+// params - delay in seconds, cb fn every tick
+const Timer = (delay, fn) => {
+  let timer
 
-  renderInterval: undefined,
-  paused: false,
-  renderTimeout: undefined,
+  const clearTimer = _ => {
+    if (timer) {
+      clearTimeout(timer)
+      timer = 0
 }
-
-const _getElValues = els => {
-  const values = {}
-
-  els.forEach(el => {
-    let value = parseInt(el.value)
-
-    if (!value) {
-      value = 0
-      el.value = 0
     }
 
-    el.value = String(value).padStart('2', '0')
-
-    let key = el.name
-    values[key] = value
-  })
-
-  return values
+  const tick = _ => {
+    delay -= 1
+    timer = setTimeout(tick, 1000)
+    fn(delay) // tick fn
+    if (delay <= 0) clearTimer()
 }
 
-const renderCounter = _ => {
-  let {hours, minutes, seconds} = state.time.getTimeObject()
-  let [h, m, s] = [hours, minutes, seconds].map(component => String(component).padStart('2', '0'))
-  counterEl.innerText = `${h} : ${m} : ${s}`
+  return {
+    start() {
+      if ((delay <= 0) || timer) return
+      timer = setTimeout(tick, 1000)
+      return
+    },
+    pause: _ => {
+      clearTimer()
+      return
+    },
+    stop() { 
+      clearTimer() 
+      delay = 0
+      return
+    },
+}
 }
 
 const runEngine = _ => {
