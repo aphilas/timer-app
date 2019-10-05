@@ -102,14 +102,16 @@ const timeUp = _ => {
   console.log('time is up!')
 }
 
-class Timer{
-  constructor(time) {
-    this.timeStamp = Timer.timeToSeconds(time)
-  }
+elId('reset').addEventListener('click', _ => {
+  elId('time-picker').reset()
+  stopAudio()
 
-  currentValue() {
-    return this.timeStamp
+  if (timer) {
+    timer.stop()
+    timer = undefined
   }
+  renderCounter(secondsToTime(0))
+})
 
 elId('pause').addEventListener('click', ({ target }) => {
   stopAudio()
