@@ -57,32 +57,23 @@ const Timer = (delay, fn) => {
 }
 }
 
-const runEngine = _ => {
-  // start time count down
-  state.time.countDown()
+// app timer
+let timer
 
-  // start rendering counter every second
-  state.renderInterval = setInterval(renderCounter, 1000)
+const tickerEl = elId('ticker')
+const tickFn = seconds => {
+  renderCounter(secondsToTime(seconds))
 
-  // start ticking animation
-  tickerEl.classList.add('ticking')
+  tickerEl.classList.remove('tick')
+  void tickerEl.offsetWidth // hack to reset animation
+  tickerEl.classList.add('tick')
 
-  /**
-   * render until counting is done
-   * +1 to show 00 instead of 01 as last value  
-  */ 
-  state.renderTimeout = setTimeout(_ => clearInterval(state.renderInterval), (state.time.timeStamp + 1) * 1000)
+  // time is up
+  if (seconds === 0) {
+    elId('audio').play()
+    timer = 0
 }
-
-const disableControls = (disable = true) => {
-  if (!disable) {
-    pauseEl.removeAttribute('disabled')
-    resetEl.removeAttribute('disabled')
-  } else {
-    pauseEl.setAttribute('disabled', '')
-    resetEl.setAttribute('disabled', '')
   }
-}
 
 const pauseEngine = _ => {
   if (state.time) state.time.pauseCountDown()
