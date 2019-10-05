@@ -192,9 +192,8 @@ button:disabled {
   background-color: var(--primary-color);
 }
 
-#ticker.ticking {
-  /* .5s delay to start the animation just as the seconds text is changing */
-  animation: blink 1s ease-out .5s infinite forwards;  
+#ticker.tick {
+  animation: blink .5s ease-out 0s 1 forwards;  
 }
 
 footer {
