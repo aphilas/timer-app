@@ -6,9 +6,13 @@ const secondsToTime = s => ({ h: Math.floor(s / 3600), m: Math.floor((s % 3600) 
 const pauseEl = document.getElementById('pause')
 const resetEl = document.getElementById('reset')
 
-const counterEl = document.getElementById('counter')
-const tickerEl = document.getElementById('ticker')
-const audiEl = document.getElementById('audio')
+// quick timer
+Array.from(elId('quick-timer').children).forEach(el => {
+  el.addEventListener('click', _ => {
+    picker[el.dataset.units].value = el.dataset.value
+    picker['submit'].click()
+  })
+})
 
 // 'global'
 const picker = elId('time-picker')
