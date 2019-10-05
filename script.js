@@ -75,29 +75,23 @@ const tickFn = seconds => {
 }
   }
 
-const pauseEngine = _ => {
-  if (state.time) state.time.pauseCountDown()
-
-  // stop ticking
-  tickerEl.classList.remove('ticking')
-
-  clearInterval(state.renderInterval)
-  state.renderInterval = undefined
-
-  clearTimeout(state.renderTimeout)
-  state.renderTimeout = undefined
-}
-
-pickerEl.addEventListener('submit', event => {
+picker.addEventListener('submit', event => {
   event.preventDefault()
 
-  let {hours, minutes, seconds} = _getElValues([hoursEl, minutesEl, secondsEl])
-  state.time = new Timer({hours, minutes, seconds})
-  
-  if (state.time.timeStamp === 0) return
+  const data = new FormData(event.target)
+  const time = {}
 
-  disableControls(false)
-  runEngine()
+  for (let [key, value] of data.entries()) {
+    time[key] = parseInt(value) || 0
+}
+
+  if (timer) timer.stop()
+
+  const s = timeToSeconds(time)
+  if (s === 0) return
+  
+  timer = Timer(timeToSeconds(time), tickFn)
+  timer.start()
 })
 
 const timeUp = _ => {
