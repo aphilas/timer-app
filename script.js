@@ -1,7 +1,7 @@
-const pickerEl = document.getElementById('time-picker')
-const hoursEl = document.getElementById('hours')
-const minutesEl = document.getElementById('minutes')
-const secondsEl = document.getElementById('seconds')
+// utility functions
+const elId = id => document.getElementById(id)
+const timeToSeconds = ({h, m, s}) => (h * 3600) + (m * 60) + s
+const secondsToTime = s => ({ h: Math.floor(s / 3600), m: Math.floor((s % 3600) / 60), s: s % 60, })
 
 const pauseEl = document.getElementById('pause')
 const resetEl = document.getElementById('reset')
@@ -10,8 +10,8 @@ const counterEl = document.getElementById('counter')
 const tickerEl = document.getElementById('ticker')
 const audiEl = document.getElementById('audio')
 
-const quickTimeEls = document.getElementsByClassName('quick-time')
-const startEl = document.getElementById('start')
+// 'global'
+const picker = elId('time-picker')
 
 // params - delay in seconds, cb fn every tick
 const Timer = (delay, fn) => {
