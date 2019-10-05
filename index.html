@@ -18,32 +18,32 @@
     <h1 id="title">Just Another Timer</h1>
 
     <div id="quick-timer">
-      <button class="quick-time" data-units="minutes" data-value="5">5 mins</button>
-      <button class="quick-time" data-units="minutes" data-value="10">10 mins</button>
-      <button class="quick-time" data-units="minutes" data-value="30">30 mins</button>
-      <button class="quick-time" data-units="hours" data-value="1">1 hour</button>
+      <button data-units="m" data-value="5">5 mins</button>
+      <button data-units="m" data-value="10">10 mins</button>
+      <button data-units="m" data-value="30">30 mins</button>
+      <button data-units="m" data-value="1">1 hour</button>
     </div>
 
 
     <form action="" id="time-picker">
   
       <!-- <label for="hours">Hours:</label> -->
-      <input type="number" id="hours" min="0" max="23" maxlength="2" name="hours" placeholder="hrs" title="Hours"> 
+      <input type="number" id="hours" min="-1" max="24" maxlength="2" placeholder="hrs" name="h" title="Hours"> 
       <span class="colon"> : </span>
   
       <!-- <label for="minutes">Minutes:</label> -->
-      <input type="number" id="minutes" min="0" max="59" maxlength="2" placeholder="mins" name="minutes" title="Minutes">
+      <input type="number" id="minutes" min="-1" max="60" maxlength="2" placeholder="mins" name="m" title="Minutes">
       <span class="colon"> : </span>
   
       <!-- <label for="seconds">Seconds:</label> -->
-      <input type="number" id="seconds" min="0" max="59" maxlength="2" placeholder="secs" name="seconds" title="Seconds">
+      <input type="number" id="seconds" min="-1" max="60" maxlength="2" placeholder="secs" name="s" title="Seconds">
   
-      <input type="submit" value="Start" id="start">
+      <input type="submit" value="Start" id="start" name="submit">
     </form>
     
     <div id="controls">
-      <button id="reset" disabled>Reset</button>
-      <button id="pause" disabled>Pause </button>
+      <button id="reset">Reset</button>
+      <button id="pause">Pause </button>
     </div>
 
     <div id="clock-face">
@@ -51,10 +51,10 @@
       <div id="ticker"></div>
     </div>
   
-    <audio src="tom.wav" id="audio"></audio>
+    <audio src="alarm_clock.ogg" id="audio" loop></audio>
   </div>
 
-  <footer>By Neville Omangi. CopyLeft 2019.</footer>
+  <footer>By <a href="https://www.nevilleomangi.me">Neville Omangi</a>. CopyLeft 2019.</footer>
 
   <script src="script.js"></script>
 </body>
