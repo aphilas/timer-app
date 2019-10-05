@@ -94,12 +94,10 @@ picker.addEventListener('submit', event => {
   timer.start()
 })
 
-const timeUp = _ => {
-  // should be moved elsewhere
-  pauseEl.setAttribute('disabled', '')
-  pauseEngine()
-  audiEl.play()
-  console.log('time is up!')
+audio = elId('audio')
+const stopAudio = _ => {
+  audio.pause()
+  audio.currentTime = 0
 }
 
 elId('reset').addEventListener('click', _ => {
