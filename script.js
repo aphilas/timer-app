@@ -132,74 +132,29 @@ class Timer{
     }, 1000)
   }
 
-  pauseCountDown() {
-    clearInterval(this.countDownInterval)
-    this.countDownInterval = undefined
+// wrap around inputs
+const wrapAround = (el, max) => {
+  if (el.value > max) el.value = '00'
+  if (el.value < 0) el.value = max
   }
 
-  getTimeObject() {
-    const seconds = this.timeStamp
+const padZero = str => str.padStart(2, '0')
 
-    return {
-      hours: Math.floor(seconds / 3600),
-      minutes: Math.floor((seconds % 3600) / 60),
-      seconds: seconds % 60,
-    }
-  }
+const handler = ({ target }) => {
+  target.value = padZero(target.value)
 
-  static timeToSeconds({hours, minutes, seconds}) {
-    return (hours * 3600) + (minutes * 60) + seconds
-  }
+  switch (target.name) {
+    case 's':
+    case 'm':
+      wrapAround(target, 59)
+      break
+    case 'h':
+      wrapAround(target, 23)
 }
-
-pauseEl.addEventListener('click', event => {
-  if (state.time.timeStamp <= 0) return
-
-  pauseEl.classList.toggle('paused')
-
-  if (state.paused) {
-
-    renderCounter()
-    runEngine()
-    event.target.innerText = 'Pause '
-    state.paused = false
-
-  } else {
-
-    pauseEngine()
-    event.target.innerText = 'Resume'
-    state.paused = true
   }
 
+Array.from(picker.elements).forEach(el => {
+
+  el.addEventListener('change', handler)
+  el.addEventListener('input', handler)
 })
-
-resetEl.addEventListener('click', event => {
-  ;[hoursEl, minutesEl, secondsEl].forEach(el => el.value = '')
-
-  pauseEngine()
-  disableControls()
-
-  state.time = undefined
-  counterEl.innerText = `00 : 00 : 00`
-})
-
-Array.from(quickTimeEls).forEach(el => {
-  el.addEventListener('click', event => {
-    const units = el.dataset.units
-    const value = el.dataset.value
-
-    ;[hoursEl, minutesEl, secondsEl].forEach(el => el.value = '')
-
-    document.getElementById(units).value = value
-    startEl.click()
-  })
-})
-
-
-
-
-
-
- 
-
-
